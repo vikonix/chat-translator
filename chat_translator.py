@@ -291,9 +291,10 @@ with gr.Blocks(title="Chat Translator") as demo:
         )
 
     # Swap flips the direction and is used often, so it stays visible alongside
-    # Clear even when the settings above are collapsed.
+    # Paste and Clear even when the settings above are collapsed.
     with gr.Row():
         swap_btn = gr.Button("Swap languages", scale=0)
+        paste_btn = gr.Button("Paste", scale=0)
         clear_btn = gr.Button("Clear", scale=0)
 
     with gr.Row():
@@ -333,6 +334,12 @@ with gr.Blocks(title="Chat Translator") as demo:
     ).then(
         persist_settings,
         inputs=[src_lang, tgt_lang, purpose, settings_open_state],
+    )
+    # Paste runs entirely in the browser: the clipboard can only be read on the
+    # client (navigator.clipboard), not by the Python backend. The JS reply
+    # fills the Source box directly, so no Python handler is needed.
+    paste_btn.click(
+        None, None, source_box, js="() => navigator.clipboard.readText()"
     )
     clear_btn.click(
         clear_fields,

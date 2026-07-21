@@ -14,6 +14,12 @@ you two things at once:
 
 If the back-translation still means what you intended, the message is safe to send.
 
+## Requirements
+
+The app translates using a **locally running [LM Studio](https://lmstudio.ai/)**:
+load a model and start its local server (Developer tab). No text ever leaves your
+machine.
+
 ## How you use it
 
 1. Type or paste your message into the **Source** box.
