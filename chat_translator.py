@@ -375,6 +375,10 @@ with gr.Blocks(title="Chat Translator") as demo:
         outputs=[settings_open_state],
     )
 
+    # Repopulate the history table on every page load, so a browser refresh does
+    # not blank it while the entries still live in memory on the backend.
+    demo.load(_history_rows, outputs=history_table)
+
 
 if __name__ == "__main__":
     demo.launch()
