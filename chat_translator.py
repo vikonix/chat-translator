@@ -297,6 +297,8 @@ with gr.Blocks(title="Chat Translator") as demo:
         paste_btn = gr.Button("Paste", scale=0)
         clear_btn = gr.Button("Clear", scale=0)
 
+    translate_btn = gr.Button("Translate", variant="primary")
+
     with gr.Row():
         source_box = gr.Textbox(
             label=f"Source ({settings['src_lang']})", lines=8,
@@ -308,15 +310,12 @@ with gr.Blocks(title="Chat Translator") as demo:
         )
         back_box = gr.Textbox(label=f"Back-translation ({settings['src_lang']})", lines=8)
 
-    translate_btn = gr.Button("Translate", variant="primary")
-
-    gr.Markdown("### History")
     # Fixed relative column widths keep the table within the page width, so the
     # long Source/Translation columns wrap instead of forcing a horizontal
     # scrollbar. The narrow direction code needs only a sliver of space.
     history_table = gr.Dataframe(
         headers=["Dir", "Source", "Translation"],
-        column_widths=["10%", "45%", "45%"],
+        column_widths=["4%", "48%", "48%"],
         interactive=False,
         wrap=True,
     )
