@@ -1,4 +1,4 @@
-# Chat Translator
+# LLM Chat Translator
 
 A small helper for translating short chat messages, with a control back-translation
 so you can trust the result even in a language you don't read.
